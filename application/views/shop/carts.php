@@ -69,7 +69,6 @@
                 <input type="text" name="state">
                 <label for="zipcode">Zipcode:</label>
                 <input type="text" name="zipcode">
-
                 <div class="form_helper">
                     <input type="checkbox" id="form_helper_checkbox" name="same_shipping">
                     <label for="checkbox">Same as Shipping Adress
@@ -78,22 +77,16 @@
                     <h1>Billing Information</h1>
                     <label for="first_name">First name:</label>
                     <input type="text" name="first_name_billing">
-
                     <label for="last_name">Last name:</label>
                     <input type="text" name="last_name_billing">
-
                     <label for="address">Address:</label>
                     <input type="text" name="address_billing">
-
                     <label for="address2">Address2:</label>
                     <input type="text" name="address2_billing">
-
                     <label for="city">City:</label>
                     <input type="text" name="city_billing">
-
                     <label for="state">State:</label>
                     <input type="text" name="state_billing">
-
                     <label for="zipcode">Zipcode:</label>
                     <input type="text" name="zipcode_billing">
                 </div>
