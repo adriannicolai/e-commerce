@@ -16,6 +16,7 @@ class products extends CI_Controller {
 	}
 	public function carts()
 	{
-		echo 'adrian';
+		$this->load->view('/shop/partials/header');
+		$this->load->view('/shop/carts');
 	}
 }

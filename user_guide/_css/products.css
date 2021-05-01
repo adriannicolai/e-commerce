@@ -10,6 +10,7 @@
         body * {
             overflow: hidden;
             box-sizing: border-box;
+            /* outline: 1px solid red; */
         }
 
         header {
@@ -100,13 +101,12 @@
         }
 
         div.container div.card,
-        aside.images img.sub_picture
-        {
+        aside.images img.sub_picture {
             cursor: pointer;
             display: table-cell;
         }
-        img.recommendation 
-        {
+
+        img.recommendation {
             cursor: pointer;
         }
 
@@ -161,3 +161,94 @@
         }
 
         /*  white-space: pre-wrap;  /* <-- THIS PRESERVES THE LINE BREAKS */
+
+        /* This is for the cart page */
+        div.container-cart {
+            margin: 5% 5%;
+        }
+
+        table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+            font-size: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 5px;
+        }
+
+        table th {
+            background-color: black;
+            color: white;
+            font-weight: 100;
+        }
+
+        table td {
+            border-bottom: 1px solid black;
+            font-size: 17px;
+        }
+
+        div.container-cart p,
+        div.container-cart a {
+            text-decoration: none;
+            text-align: right;
+            margin: 0px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        div.container-cart table tr td a,
+        div.container-cart table tr td p {
+            color: black;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+        }
+
+        div.container-cart a.redirect {
+            float: right;
+            color: white;
+            background-color: silver;
+            padding: 5px;
+        }
+
+        section {
+            width: 50%;
+        }
+
+        section form {
+            background-color: whitesmoke;
+        }
+
+        section form label,
+        section form input {
+            display: inline-block;
+            height: 25px;
+            padding: 5px;
+        }
+
+        section form label {
+            width: 30%;
+            text-align: right;
+        }
+
+        section form input {
+            width: 69%;
+        }
+
+        section form h1 {
+            text-align: left;
+            display: block;
+        }
+
+        section form div.form_helper {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        section form input[type=checkbox] {
+            width: 4%;
+
+        }

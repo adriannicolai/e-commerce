@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['/products/show/(:any)'] = 'products/show/$1';
 $route['carts'] = 'products/carts';
+$route['admin'] = 'admin/index';
