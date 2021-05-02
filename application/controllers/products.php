@@ -10,9 +10,9 @@ class products extends CI_Controller {
 	}
 	public function show($id)
 	{
-		$clean_id['id'] = $this->security->xss_clean($id);
+		$product = $this->product->get_selected_product($id);
 		$this->load->view('/shop/partials/header');
-		$this->load->view('/shop/show', $clean_id);
+		$this->load->view('/shop/show', $product);
 	}
 	public function carts()
 	{
@@ -27,5 +27,10 @@ class products extends CI_Controller {
 	{
 		$products['products'] = $this->product->get_products($this->input->post('search', TRUE));
 		$this->load->view('/shop/partials/products_list', $products);
+	}
+	public function get_similar_items()
+	{
+		$similar_items['similar_items'] = $this->product->get_similar_items($this->input->post(NULL, TRUE));
+		$this->load->view('/shop/partials/similar_items', $similar_items);
 	}
 }
