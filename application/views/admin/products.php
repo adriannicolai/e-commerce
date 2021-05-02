@@ -229,21 +229,117 @@
         }
 
         /* The table css for the products page is on the dashboard part, I recycled my code */
+        div.container-products {
+            margin: 0 5%;
+        }
 
-        div.container table tbody td.product_image {
+        div.container-products table {
+            width: 100%;
+            text-align: left;
+            margin-top: 3%;
+            border-collapse: collapse;
+        }
+
+        div.container-products table tbody tr td form {
+            display: inline-block;
+            width: 100%;
+            margin: 0;
+            outline: none;
+        }
+
+        div.container-products table tbody tr td form select {
+            display: inline-block;
+            width: 100%;
+            margin: 0;
+        }
+
+        div.container-products table th,
+        div.container-products table td {
+            padding: 5px;
+            font-weight: 100;
+        }
+
+        div.container-products table th {
+            background-color: darkred;
+            color: white;
+        }
+
+        div.container-products table td {
+            border-bottom: 1px solid darkred;
+        }
+
+        div.container-products table tbody td.product_image {
             width: 9%;
+        }
+
+        div.modal-header {
+            background-color: darkred;
+            color: white;
         }
 
         div.modal-body form {
             margin: 0px;
             width: 100%;
+            outline: none;
         }
 
         div.modal-body form * {
             display: block;
             width: 100%;
         }
+
+        div.modal-body textarea {
+            resize: none;
+        }
+
+        div.modal-body form input,
+        div.modal-body form select {
+            height: 28px;
+            margin-bottom: 5px;
+        }
     </style>
+    <script>
+        $(document).ready(function() {
+            $(document).on('keyup', 'input[name=category]', function() {
+                if (!$(this).val()) {
+                    $('select[name=categories]').attr('disabled', false);
+                    $('#preview').prepend('<h1>sadasds</h1>');
+                    console.log('dfsfsdfds');
+                } else {
+                    $('select[name=categories]').attr('disabled', true);
+                }
+            });
+            function previewImages() {
+
+                var $preview = $('#preview');
+                if (this.files) $.each(this.files, readAndPreview);
+
+                function readAndPreview(i, file) {
+
+                    if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                        return alert(file.name + " is not an image");
+                    } // else...
+
+                    var reader = new FileReader();
+
+                    $(reader).on("load", function() {
+                        $preview.prepend($("<img/>", {
+                            src: this.result,
+                            height: 100,
+                            class: "preview_image"
+                        }));
+                        $('.preview_image').draggable();
+                    });
+
+                    reader.readAsDataURL(file);
+
+                }
+
+            }
+
+            $('#file-input').on("change", previewImages);
+        });
+    </script>
 </head>
 
 <body>
@@ -251,7 +347,7 @@
         <input type="search" name="search">
         <a href="#" data-toggle="modal" data-target="#myModal">Add new product</a>
     </form>
-    <div class="container">
+    <div class="container-products">
         <table>
             <thead>
                 <tr>
@@ -316,7 +412,9 @@
                             <option value="asdasd">dasdas</option>
                             <option value="sadasdsa">adas</option>
                         </select>
-                        <input type="text" placeholder="Or add a new category">
+                        <input type="text" name="category" placeholder="Or add a new category">
+                        <input id="file-input" type="file" multiple>
+                        <div id="preview"></div>
                     </form>
                 </div>
                 <div class="modal-footer">

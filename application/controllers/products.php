@@ -19,4 +19,13 @@ class products extends CI_Controller {
 		$this->load->view('/shop/partials/header');
 		$this->load->view('/shop/carts');
 	}
+	public function get_categories(){
+		$categories['categories'] = $this->product->get_categories();
+		$this->load->view('/shop/partials/category_list', $categories);
+	}
+	public function get_products()
+	{
+		$products['products'] = $this->product->get_products($this->input->post('search', TRUE));
+		$this->load->view('/shop/partials/products_list', $products);
+	}
 }
