@@ -18,6 +18,15 @@
                     $(this).css('background-color', 'white');
                 });
             }
+            /* This is go get and display products via category */
+            function sort_by_categories() {
+                $(document).on('click', 'a', function() {
+                    $.get('/products/show_by_category/' + $(this).attr('category_id'), function(categorized_search) {
+                        $('div.container').html(categorized_search);
+                        hover_change_color();
+                    });
+                });
+            }
 
             /* This changes the background color when an element with class navigatioon was hovered on */
             $('.navigation').hover(function() {
@@ -31,6 +40,7 @@
             /* Get all categopries if document is ready */
             $.get('/products/get_categories', function(categories) {
                 $('aside').html(categories);
+                sort_by_categories();
             });
             /* Get all of he products aftert form submit */
             $('form').submit(function() {
@@ -48,15 +58,20 @@
 </head>
 
 <body>
-    <form action="/products/get_products" class="search" method="post">
+    <!-- this form is excluded in the csrf protection in the config file because this page loads via ajax so doesn't refresh the page, there are no sensitive data in here just product id
+    this form is protected from sql injection and xxs  though -> code is in the model -->
+    <form action=" /products/get_products" class="search" method="post">
         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
         <input type="search" name="search" placeholder="Search in Dojo shop">
         <input type="image" src="<?= base_url('/user_guide/_images/search.png'); ?>" height=20 width=20>
     </form>
-    <aside>
-    </aside>
-    <div class="container">
+    <div class="main-container">
+        <aside>
+        </aside>
+        <div class="container">
+        </div>
     </div>
+
 </body>
 
 </html>

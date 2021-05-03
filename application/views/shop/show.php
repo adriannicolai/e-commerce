@@ -42,7 +42,6 @@
             $('.sub_picture').click(function() {
                 $('.main_picture').attr('src', $(this).attr('src'));
             });
-
         });
     </script>
 </head>

@@ -33,4 +33,8 @@ class products extends CI_Controller {
 		$similar_items['similar_items'] = $this->product->get_similar_items($this->input->post(NULL, TRUE));
 		$this->load->view('/shop/partials/similar_items', $similar_items);
 	}
+	public function show_by_category($category_id){
+		$product['products'] = $this->product->get_by_category($category_id);
+		$this->load->view('/shop/partials/products_list', $product);
+	}
 }
